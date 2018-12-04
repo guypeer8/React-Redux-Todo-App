@@ -8,7 +8,9 @@ import VisibleTodoList from "../containers/VisibleTodoList";
 
 class App extends React.Component {
     hasFilterChanged(prevProps) {
-        return this.props.match.params.filter !== prevProps.match.params.filter;
+        const currFilter = this.props.match.params.filter;
+        const prevFilter = prevProps.match.params.filter;
+        return currFilter !== prevFilter;
     }
 
     onRouteChanged() {

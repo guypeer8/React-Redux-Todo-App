@@ -7,8 +7,22 @@ class AddTodo extends React.Component {
   constructor(props) {
     super(props);
 
+    this.$textInput = React.createRef();
+
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
+  }
+
+  componentDidMount() {
+      this.focusInput();
+  }
+
+  componentDidUpdate() {
+      this.focusInput();
+  }
+
+  focusInput() {
+      this.$textInput.current.focus();
   }
 
   onChange(e) {
@@ -26,6 +40,7 @@ class AddTodo extends React.Component {
     else this.props.editTodo({ id, text });
 
     this.props.clearTodo();
+    this.focusInput();
   }
 
   render() {
@@ -35,7 +50,11 @@ class AddTodo extends React.Component {
     return (
       <div>
         <form onSubmit={this.onSubmit}>
-          <input value={text} onChange={this.onChange} />
+          <input
+              value={text}
+              onChange={this.onChange}
+              ref={this.$textInput}
+          />
           <button type="submit">
               {todoAction} Todo
           </button>
