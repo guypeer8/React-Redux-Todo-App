@@ -36,10 +36,12 @@ Footer.propTypes = {
     deleteCompleted: PropTypes.func.isRequired,
 };
 
-export default connect(
-  state => ({
+const mapStateToProps = state => ({
     active: state.todos.filter(({ completed }) => !completed).length,
-    completed: state.todos.filter(({ completed }) => completed).length
-  }),
-  { deleteCompleted }
+    completed: state.todos.filter(({ completed }) => completed).length,
+});
+
+export default connect(
+    mapStateToProps,
+    { deleteCompleted }
 )(Footer);

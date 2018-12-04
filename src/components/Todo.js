@@ -3,12 +3,13 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { toggleTodo, startEdit } from "../actions";
 
-const Todo = ({ id, completed, text, toggleTodo, startEdit }) => (
+const Todo = ({ id, completed, text, idx, toggleTodo, startEdit }) => (
   <li
     style={{
       textDecoration: completed ? "line-through" : "none"
     }}
   >
+    <span>{idx}.</span>
     <input
       type="checkbox"
       onChange={toggleTodo}

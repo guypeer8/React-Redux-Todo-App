@@ -29,13 +29,16 @@ class AddTodo extends React.Component {
   }
 
   render() {
-    const { text } = this.props.todoInput;
+    const { id, text } = this.props.todoInput;
+    const todoAction = id ? 'Edit' : 'Add';
 
     return (
       <div>
         <form onSubmit={this.onSubmit}>
           <input value={text} onChange={this.onChange} />
-          <button type="submit">Add Todo</button>
+          <button type="submit">
+              {todoAction} Todo
+          </button>
         </form>
       </div>
     );
