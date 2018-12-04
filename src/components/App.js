@@ -41,6 +41,10 @@ class App extends React.Component {
     }
 }
 
+App.defaultProps = {
+    filter: 'all',
+};
+
 App.propTypes = {
     filter: PropTypes.oneOf([
         'all',
@@ -51,7 +55,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state, { match }) => ({
-    filter: match.params.filter || 'all',
+    filter: match.params.filter,
 });
 
 export default connect(
